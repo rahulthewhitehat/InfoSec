@@ -1,4 +1,4 @@
-## Live acquisition of system RAM and store the memory dump for forensic analysis.
+## 8 A Live acquisition of system RAM and store the memory dump for forensic analysis.
 
 🛠️ Tools Used
 LiME (Linux Memory Extractor)
@@ -37,3 +37,52 @@ Verify the Image File:
 Note the file size.
 
 Optionally open it in Volatility or FTK Imager for viewing.
+
+
+## 8 B Live copy of a folder and ensure integrity with hash values.
+
+🛠️ Tools Used
+rsync or cp
+
+md5sum / sha256sum
+
+tar or dd for complete archival
+
+## Steps - CLI
+Copy folder with rsync while preserving attributes:
+
+sudo rsync -avh --progress /home/rahul/Documents/target_folder/ /mnt/usb/backup_folder/
+Create archive (optional):
+
+sudo tar -czvf folder_backup.tar.gz /home/rahul/Documents/target_folder
+Generate hash of original and copied data:
+
+find /home/rahul/Documents/target_folder -type f -exec sha256sum {} \; > original_hashes.txt
+find /mnt/usb/backup_folder -type f -exec sha256sum {} \; > copied_hashes.txt
+Compare the hash files:
+
+diff original_hashes.txt copied_hashes.txt
+
+## Steps - FTK Manager
+
+Open FTK Imager.
+
+Go to File > Create Disk Image.
+
+Select Source Type: Contents of a Folder.
+
+Browse and add the folder (e.g., C:\Users\Rahul\Documents\ProjectX).
+
+Choose destination image type:
+
+Use Raw (.dd) or AD1 (AccessData Custom Container)
+
+Set image destination, name, and case details.
+
+Click Finish → Start to begin acquisition.
+
+Verify hashes:
+
+FTK automatically generates MD5/SHA1 hash of the image.
+
+You can view this in the summary report.
