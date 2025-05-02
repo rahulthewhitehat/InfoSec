@@ -1,0 +1,58 @@
+# 🔐 O-Saft – OWASP SSL Advanced Forensic Tool
+
+## 📌 Objective
+To evaluate SSL/TLS configurations of a target web server using **O-Saft**, understand the cipher suites, hashing algorithms, certificate info, and detect possible vulnerabilities in the SSL implementation.
+
+---
+
+## 🧰 Tool Used
+**O-Saft** (OWASP SSL Advanced Forensic Tool)  
+Language: Perl  
+Platform: Linux/Windows  
+Official: [https://owasp.org/www-project-o-saft/](https://owasp.org/www-project-o-saft/)
+
+## 🧪 Tasks Performed
+
+### 1️⃣ Basic Info: List SSL Certificate Details
+
+```bash
+./o-saft -h <target-domain>
+
+2️⃣ Check Supported Cipher Suites
+./o-saft -h <target-domain> +cipher
+✅ Lists all supported ciphers by the server.
+
+Example Output:
+
+TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+TLS_DHE_RSA_WITH_AES_256_CBC_SHA
+...
+You can also test specific ciphers:
+
+./o-saft -h <target-domain> --cipher=TLS_RSA_WITH_AES_128_CBC_SHA
+3️⃣ View SSL/TLS Versions Supported
+./o-saft -h <target-domain> +version
+✅ Shows whether SSLv2, SSLv3, TLS 1.0/1.1/1.2/1.3 are supported.
+
+4️⃣ List Archive File (General Linux Skill)
+tar -tvf archive.tar.gz
+✅ Used to list contents of an archive without extracting (relevant in forensic review when analyzing dumped configs).
+
+
+
+Sample Output
+A snippet from o-saft-sample-output.txt:
+
+Host: example.com
+Certificate Common Name: example.com
+Issuer: Let's Encrypt Authority X3
+Valid From: 2024-01-01
+Valid To:   2024-03-31
+TLS Versions Supported: TLS 1.2, TLS 1.3
+Ciphers:
+ - TLS_AES_128_GCM_SHA256
+ - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+
+It can play a vital role in web application pen-testing, secure server configuration, and compliance checks.
+
+
