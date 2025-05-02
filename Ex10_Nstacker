@@ -1,0 +1,93 @@
+# 🛡️ N-Stalker Web Application Security Scanner
+
+To perform a **web application vulnerability assessment** using **N-Stalker Web Application Security Scanner**, analyze the results, and understand the development, QA, infrastructure, and pen-test profiles offered by the tool.
+
+## 🧰 Tool Used
+**N-Stalker Web Application Security Scanner**  
+Platform: Windows
+
+---
+
+## 🚀 Features Demonstrated
+
+- ✅ HTTP Fingerprinting
+- ✅ Parallel Web Crawling
+- ✅ Server-Side Technology Discovery
+- ✅ Component-Oriented Scanning Engine
+- ✅ Web Form Autocomplete Analysis
+- ✅ IDS Evasion Fuzzing Test
+- ✅ Automatic False Positive Prevention Engine
+
+---
+
+## 🏗️ Profiles Used
+
+### 1. **Development & QA Profile**
+- **Goal**: Deeply analyze HTML and script structure.
+- **Purpose**: Identify logic flaws and insecure coding practices.
+- **Use Case**: Validate internal or third-party code before production.
+
+### 2. **Infrastructure & Deploy Profile**
+- **Goal**: Assess web server and environment security.
+- **Features**: 35,000+ attack signatures to validate hosting security.
+- **Use Case**: Guarantee secure deployment environment.
+
+### 3. **Pen-Test & Security Audit Profile**
+- **Goal**: Full web application security audit.
+- **Scope**: Development, infrastructure, and production layers.
+- **Use Case**: Prepare report for external audits or internal compliance.
+
+---
+
+## 🧪 Steps Performed
+
+1. Launched N-Stalker and selected `Web Application Assessment`.
+2. Entered target URL: `http://example.com`
+3. Selected scanning profile:
+   - ✅ Pen-test & Audit
+   - ✅ QA & Development
+4. Configured scanning parameters (default/advanced)
+5. Initiated scan and monitored parallel crawling and fingerprinting
+6. Analyzed vulnerabilities and categorized them by severity
+7. Exported scan results (HTML/PDF format)
+
+---
+
+## 📊 Sample Findings (Example)
+
+| Vulnerability                | Severity | Description                                |
+|-----------------------------|----------|--------------------------------------------|
+| Cross-site Scripting (XSS)  | High     | Reflected input on `search` page            |
+| Clickjacking                | Medium   | Missing X-Frame-Options header              |
+| Outdated Library            | High     | JQuery 1.7 detected                         |
+| Directory Listing Enabled   | Medium   | Exposed `/uploads/` directory               |
+
+---
+
+## 📂 Folder Contents
+n-stalker-web-scan/
+├── README.md
+├── screenshots/
+│ ├── launch-screen.png
+│ ├── scan-profile-selection.png
+│ ├── scan-results.png
+│ └── vulnerability-details.png
+└── reports/
+└── full-scan-report.pdf
+
+
+---
+
+## 🧩 Conclusion
+N-Stalker proved to be a powerful web vulnerability scanner with:
+- Deep web crawling capabilities
+- Accurate vulnerability detection
+- Support for different assessment roles (QA, Infra, Pentest)
+
+It is suitable for **browser-level** vulnerabilities and **code quality assurance** in both internal and external testing scenarios.
+
+---
+
+## 📌 Note
+All scanning activities were done ethically, with permission from the asset owner or within a legal lab setup.
+
