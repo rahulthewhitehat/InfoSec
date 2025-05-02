@@ -1,0 +1,41 @@
+#!/bin/bash
+
+echo "=== Starting Linux Hardening Process ==="
+
+# 1. Display all services and their current start-up status in each run-level
+echo -e "\n--- Checking services with chkconfig --list ---"
+chkconfig --list | grep on
+
+# 2. Disable unnecessary services (example: bluetooth)
+# Replace or comment out any services as needed
+echo -e "\n--- Disabling unused services ---"
+services_to_disable=("bluetooth" "cups" "avahi-daemon")
+for service in "${services_to_disable[@]}"; do
+    echo "Disabling $service..."
+    chkconfig "$service" off 2>/dev/null
+done
+
+# 3. Disable USB storage by blacklisting the module
+echo -e "\n--- Disabling USB storage ---"
+echo "install usb-storage /bin/true" | sudo tee /etc/modprobe.d/usb-storage.conf > /dev/null
+echo "USB storage module will be disabled after reboot."
+
+# 4. Example usage of grep to search for a pattern
+echo -e "\n--- Grep example: Searching for 'root' in /etc/passwd ---"
+grep root /etc/passwd
+
+# 5. Example usage of awk to display usernames from /etc/passwd
+echo -e "\n--- Awk example: Listing usernames ---"
+awk -F':' '{ print $1 }' /etc/passwd
+
+# 6. Locking down cron jobs by denying access
+echo -e "\n--- Locking down cron jobs ---"
+echo "username_to_block" | sudo tee -a /etc/cron.d/cron.deny > /dev/null
+echo "User 'username_to_block' will be denied cron access."
+
+# 7. Ensure proper permissions on cron files
+chmod 600 /etc/cron.d/cron.deny
+chown root:root /etc/cron.d/cron.deny
+
+# Final message
+echo -e "\n=== Hardening Complete. Please reboot for USB changes to take effect. ==="
